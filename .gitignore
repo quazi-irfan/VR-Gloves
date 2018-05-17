@@ -1,0 +1,8 @@
+#Soruce: https://github.com/github/gitignore/blob/master/Gradle.gitignore#L8:1
+
+.gradle
+/build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+

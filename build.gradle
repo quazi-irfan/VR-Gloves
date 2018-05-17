@@ -1,0 +1,45 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+	jcenter()
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+mainClassName = 'net.qirfan.Application'
+
+dependencies {
+    compile "org.jmonkeyengine:jme3-core:3.1.0-stable"
+    compile "org.jmonkeyengine:jme3-effects:3.1.0-stable"
+    compile "org.jmonkeyengine:jme3-networking:3.1.0-stable"
+    compile "org.jmonkeyengine:jme3-plugins:3.1.0-stable"
+    compile "org.jmonkeyengine:jme3-jogg:3.1.0-stable"
+    compile "org.jmonkeyengine:jme3-blender:3.1.0-stable"
+    compile "org.jmonkeyengine:jme3-bullet-native:3.1.0-stable"
+    compile "org.scream3r:jssc:2.8.0"
+    compile "org.slf4j:slf4j-api:1.8.0-alpha2"
+    compile "com.simsilica:lemur:1.10.1"
+    compile "com.simsilica:lemur-proto:1.9.1"
+    compile "org.codehaus.groovy:groovy-all:2.5.0-beta-1"
+    runtime "org.jmonkeyengine:jme3-desktop:3.1.0-stable"
+    runtime "org.jmonkeyengine:jme3-lwjgl3:3.1.0-stable"
+}
+
+jar {
+    baseName = 'VR-Gloves'
+    version =  '0.1.0'
+    manifest {
+        attributes 'Main-Class': 'net.qirfan.Application'
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+
+
